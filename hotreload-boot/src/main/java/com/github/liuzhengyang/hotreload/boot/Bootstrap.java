@@ -89,6 +89,8 @@ public class Bootstrap {
         command.add(localHotReloadWebJarFiles.getAbsolutePath());
 
         ProcessBuilder processBuilder = new ProcessBuilder(command);
+        // Merge System.err and System.out
+        processBuilder.redirectErrorStream(true);
         Process start = processBuilder.start();
         InputStream inputStream = start.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
